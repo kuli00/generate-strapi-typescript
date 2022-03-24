@@ -4,6 +4,9 @@
   "description": "Package to generate typescript interfaces for strapi v4 components and collections",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "gst": "index.js"
+  },
   "engines": {
     "node": "^12"
   },
