@@ -22,7 +22,7 @@ export const mediaInterface = `export interface Media {
     createdAt: Date;
     updatedAt: Date;
   }
-}`
+}`;
 
 export const mediaFormatInterface = `export interface MediaFormat {
   name: string;
@@ -40,4 +40,4 @@ export const collectionDefaultAttributes = {
   createdAt: { type: 'date', required: true },
   updatedAt: { type: 'date' },
   publishedAt: { type: 'date' },
-}
+};

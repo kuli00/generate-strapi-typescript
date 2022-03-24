@@ -12,6 +12,8 @@
   },
   "scripts": {
     "start": "node ./index.js",
+    "lint": "eslint index.js ./src/*.js",
+    "lint:fix": "npm run lint -- --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,5 +33,12 @@
   "bugs": {
     "url": "https://github.com/kuli00/generate-strapi-typescript/issues"
   },
-  "homepage": "https://github.com/kuli00/generate-strapi-typescript#readme"
+  "homepage": "https://github.com/kuli00/generate-strapi-typescript#readme",
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "prettier": "^2.6.0"
+  }
 }

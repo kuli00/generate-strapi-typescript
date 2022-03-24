@@ -1,7 +1,7 @@
-import { toPascalCase } from './utils.js'
+import { toPascalCase } from './utils.js';
 
 const getComponentType = attribute => {
-  switch(attribute.type) {
+  switch (attribute.type) {
     // String
     case 'richtext':
     case 'string':
@@ -34,21 +34,14 @@ const getComponentType = attribute => {
 
     // Relation
     case 'relation':
-      return `${toPascalCase(
-        attribute
-          .target
-          .split('.')
-          .pop()
-      )}${attribute.relation === 'oneToMany' ? '[]' : ''}`;
+      return `${toPascalCase(attribute.target.split('.').pop())}${
+        attribute.relation === 'oneToMany' ? '[]' : ''
+      }`;
 
     // Component
     case 'component':
       return `C${toPascalCase(
-        attribute
-          .component
-          .split('.')
-          .map(toPascalCase)
-          .join('')
+        attribute.component.split('.').map(toPascalCase).join(''),
       )}${attribute.repeatable ? '[]' : ''}`;
 
     // Media
@@ -57,17 +50,13 @@ const getComponentType = attribute => {
 
     // Dynamiczone
     case 'dynamiczone':
-      return `(${attribute.components.map(c => `C${toPascalCase(
-        c
-          .split('.')
-          .map(toPascalCase)
-          .join(''))}`)
+      return `(${attribute.components
+        .map(c => `C${toPascalCase(c.split('.').map(toPascalCase).join(''))}`)
         .join(' | ')})[]`;
-
 
     default:
       return null;
   }
-}
+};
 
 export default getComponentType;
