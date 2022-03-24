@@ -1,9 +1,15 @@
 {
   "name": "generate-strapi-typescript",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Package to generate typescript interfaces for strapi v4 components and collections",
   "main": "index.js",
   "type": "module",
+  "files": [
+    "src/*",
+    "index.js",
+    "Readme.md",
+    "package.json"
+  ],
   "bin": {
     "gst": "index.js"
   },
