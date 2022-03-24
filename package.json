@@ -1,0 +1,32 @@
+{
+  "name": "generate-strapi-typescript",
+  "version": "0.1.0",
+  "description": "Package to generate typescript interfaces for strapi v4 components and collections",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": "^12"
+  },
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuli00/generate-strapi-typescript.git"
+  },
+  "keywords": [
+    "strapi",
+    "v4",
+    "typescript",
+    "interface",
+    "types",
+    "ts"
+  ],
+  "author": "Maciej Kuliński",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuli00/generate-strapi-typescript/issues"
+  },
+  "homepage": "https://github.com/kuli00/generate-strapi-typescript#readme"
+}
