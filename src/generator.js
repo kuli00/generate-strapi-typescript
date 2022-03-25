@@ -4,25 +4,34 @@ import getComponentType from './componentType.helper.js';
 import { collectionDefaultAttributes } from './defaultStrapiInterfaces.js';
 import { toPascalCase } from './utils.js';
 
-export const generateInterface = (interfaceName, attributes) => {
+const generateAttributes = (attributes) => {
+  return Object.keys(attributes).map(key => {
+    return `${key}${attributes[key].required ? '' : '?'}: ${getComponentType(attributes[key])};`
+  }).join('\n');
+}
+
+export const generateInterface = (interfaceName, attributes, isComponent = false) => {
   let interfaceString = `export interface ${interfaceName} {\n`;
   interfaceString += 'id: number;\n';
-  interfaceString += 'attributes: {\n';
-  Object.keys(attributes).forEach(key => {
-    interfaceString += `${key}${
-      attributes[key].required ? '' : '?'
-    }: ${getComponentType(attributes[key])};\n`;
-  });
-  interfaceString += '}\n}';
+  if (isComponent) {
+    interfaceString += generateAttributes(attributes);
+  } else {
+    interfaceString += 'attributes: {';
+    interfaceString += generateAttributes(attributes);
+    interfaceString += '\n}';
+  }
+
+  interfaceString += '}\n';
   return interfaceString;
 };
 
 export const generateInterfaceFromComponent = componentFilePath => {
+  const componentId = componentFilePath.split('/').pop().slice(0, -5);
   const component = JSON.parse(fs.readFileSync(componentFilePath));
   const interfaceName = `C${toPascalCase(
     component.collectionName.split('_')[1],
-  )}${toPascalCase(component.info.displayName)}`;
-  return generateInterface(interfaceName, component.attributes);
+  )}${toPascalCase(componentId)}`;
+  return generateInterface(interfaceName, component.attributes, true);
 };
 
 export const generateInterfaceFromApiModel = modelFilePath => {

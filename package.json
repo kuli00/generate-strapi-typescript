@@ -1,6 +1,6 @@
 {
   "name": "generate-strapi-typescript",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Package to generate typescript interfaces for strapi v4 components and collections",
   "main": "index.js",
   "type": "module",
@@ -20,7 +20,7 @@
     "start": "node ./index.js",
     "lint": "eslint index.js ./src/*.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js ../psykoty/cms/app/src ./types.ts"
   },
   "repository": {
     "type": "git",
